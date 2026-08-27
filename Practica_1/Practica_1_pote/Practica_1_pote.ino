@@ -25,8 +25,8 @@ void loop() {
 //   uint8_t medicion_cruda = analogRead(A0);
 //   tiempos[1] = micros();
 
-//  // unsigned long tiempo_actual = micros();
 
+//  // unsigned long tiempo_actual = micros();
 //   //Serial.print("Medicion Cruda: ");
 //   Serial.print(medicion_cruda);
 //   Serial.print(" | ");
