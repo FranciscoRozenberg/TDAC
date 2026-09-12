@@ -1,7 +1,7 @@
 #include <NewPing.h>
 
-#define TRIGGER_PIN 10
-#define ECHO_PIN 11
+#define TRIGGER_PIN 6
+#define ECHO_PIN 7
 #define MAX_DISTANCE 200 //cm
 
 const float tiempo_1cm = 29.287; //us
@@ -12,7 +12,7 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 void lectura_regular(unsigned int T = 20000);
 
 void setup() {
-  Serial.begin(2000000);
+  Serial.begin(115200);
   tiempos[0] = micros();
 
 }

@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-#define PWM_PIN 9
+#define PWM_PIN 5
 
 unsigned long tiempos[2];
 
