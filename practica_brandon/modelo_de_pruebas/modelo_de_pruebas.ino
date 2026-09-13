@@ -10,6 +10,7 @@
 #define MAX_DISTANCE 200
 //CREACION DEL SERVO
 Servo servo;
+//SENSOR DE ULTRASONIDO
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 //CREACION DE LA IMU
 Adafruit_MPU6050 mpu;
@@ -80,12 +81,12 @@ void loop() {
   static float alpha = 0;
   contador++;
   //SERVO
-  if (contador == 200) {
+  if (contador == 100) {
     contador = 0;
-    if (T_BARRA == 1500) {
+    if (T_BARRA == 1700) {
       T_BARRA = 1200;
     } else {
-      T_BARRA = 1500;
+      T_BARRA = 1700;
     }
   }
   servo.writeMicroseconds(T_BARRA);
