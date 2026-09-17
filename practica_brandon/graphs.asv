@@ -139,8 +139,8 @@ y_sim_ext = filter(num_d, den_d, [0; u_plot(1:end-1)]);
 [y_sim_s, t_out_s] = step(G_s * A_step, t_plot(end));
 
 plot(t_plot, y_sim_ext, 'r-', 'LineWidth', 2.0, 'DisplayName', 'Modelo G(z)');
-stairs(t_out_s, y_sim_s, 'b--', 'LineWidth', 1.8, 'DisplayName', 'Modelo G(s)');
-%plot(t_plot, u_plot, 'g:', 'LineWidth', 1.5, 'DisplayName', 'Entrada u(t) = A_{step}');
+plot(t_out_s, y_sim_s, 'b--', 'LineWidth', 1.8, 'DisplayName', 'Modelo G(s)');
+plot(t_plot, u_plot, 'g:', 'LineWidth', 1.5, 'DisplayName', 'Entrada u(t) = A_{step}');
 
 xlabel('Tiempo relativo [s]');
 ylabel('Amplitud');
@@ -170,8 +170,8 @@ end
 % Simulación con la entrada cuadrada global
 y_sim_cuadrada = filter(num_d, den_d, [0; u_cuadrada(1:end-1)]);
 
-stairs(t_total, y, 'Color', [0.2 0.5 0.9], 'LineWidth', 1.2, 'DisplayName', 'Salida Medida y[k]');
-%plot(t_total, u_cuadrada, 'Color', [0.3 0.8 0.3], 'LineStyle', ':', 'LineWidth', 1.5, 'DisplayName', 'Entrada Cuadrada u[k]');
+plot(t_total, y, 'Color', [0.2 0.5 0.9], 'LineWidth', 1.2, 'DisplayName', 'Salida Medida y[k]');
+plot(t_total, u_cuadrada, 'Color', [0.3 0.8 0.3], 'LineStyle', ':', 'LineWidth', 1.5, 'DisplayName', 'Entrada Cuadrada u[k]');
 plot(t_total, y_sim_cuadrada, 'r--', 'LineWidth', 1.8, 'DisplayName', 'Modelo G(z)');
 
 xlabel('Tiempo [s]');
