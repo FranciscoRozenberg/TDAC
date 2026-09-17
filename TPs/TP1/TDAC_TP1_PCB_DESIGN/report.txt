@@ -1,0 +1,8 @@
+Plotted to '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-B_Cu.gbr'.
+Plotted to '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-Edge_Cuts.gbr'.
+Created Gerber job file '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-job.gbrjob'.
+Plotted to '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-B_Cu.gbr'.
+Plotted to '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-Edge_Cuts.gbr'.
+Created Gerber job file '/home/CuadradoGris/Documents/TdAC/TPs/TP1/TDAC_TP1_PCB_DESIGN/TDAC_TP1_PCB_DESIGN-job.gbrjob'.
+Info: Done.
+Info: Done.

@@ -87,7 +87,7 @@ void loop() {
   //       Serial.print(angulo_final, 3);
   //       Serial.println(" grados");
   //       Serial.print("Tiempo para mover 30 grados: ");
-  //       Serial.print(t_final - t_inicial-i);//RESTO i SON LOS DELAYS
+  //       Serial.print(t_final - t_inicial-1);//RESTO 1 SON LOS DELAYS
   //       Serial.println(" ms");
   //       break;
   //     }

@@ -83,10 +83,10 @@ void loop() {
   //SERVO
   if (contador == 100) {
     contador = 0;
-    if (T_BARRA == 1700) {
+    if (T_BARRA == 1500) {
       T_BARRA = 1200;
     } else {
-      T_BARRA = 1700;
+      T_BARRA = 1500;
     }
   }
   servo.writeMicroseconds(T_BARRA);
@@ -108,7 +108,7 @@ void loop() {
   //Serial.print(temp.temperature);(" degC");
   alpha_k = alpha_k + (g.gyro.x-sesgo_x) * (T_MUESTREO * 1e-6);
   alpha_a = atan2(a.acceleration.y, a.acceleration.z);
-  float R = 0.85;
+  float R = 0.95;
   alpha = (alpha + (g.gyro.x-sesgo_x) * (T_MUESTREO * 1e-6)) * R + alpha_a * (1-R);
   matlab_send(alpha_k,alpha_a,alpha,distancia,(float)T_BARRA);
   //FINALIZA EL LOOP
