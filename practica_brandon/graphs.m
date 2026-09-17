@@ -98,6 +98,15 @@ fprintf('Amortiguamiento (zeta)   : %.4f\n', zeta);
 fprintf('Ganancia estática (K_dc) : %.4f\n\n', K_dc);
 G_s
 
+G_z
+
+sign_a1 = '+'; if -a1 < 0, sign_a1 = '-'; end
+sign_a2 = '+'; if -a2 < 0, sign_a2 = '-'; end
+sign_b2 = '+'; if  b2 < 0, sign_b2 = '-'; end
+
+fprintf('   y[k] = %s %.6f y[k-1] %s %.6f y[k-2] + %.6f u[k-1] %s %.6f u[k-2]\n\n', ...
+    sign_a1, abs(a1), sign_a2, abs(a2), b1, sign_b2, abs(b2));
+
 %% 6. Validación Visual 1: Transitorio y Estacionario Multitraza
 figure('Color', 'w', 'Name', 'Validación Multitraza'); 
 hold on; grid on;
