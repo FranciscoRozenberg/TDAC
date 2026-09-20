@@ -1,78 +1,53 @@
 30 grados
-Angulo final: 10.147 grados
-Tiempo para mover 30 grados: 390 ms
-Angulo inicial: -18.518 grados
-Angulo final: 11.826 grados
-Tiempo para mover 30 grados: 412 ms
-Angulo inicial: -19.402 grados
-Angulo final: -70.281 grados
-Tiempo para mover 30 grados: 76 ms
-Angulo inicial: -19.823 grados
-Angulo final: 10.600 grados
-Tiempo para mover 30 grados: 66 ms
-Angulo inicial: -18.659 grados
-Angulo inicial: -20.095 grados
-Angulo final: 11.626 grados
-Tiempo para mover 30 grados: 416 ms
-Angulo inicial: -20.090 grados
-Angulo final: 10.862 grados
+Angulo inicial barra: -20.435 grados
+Angulo servo: 12221 grados
+Angulo final: 11.194 grados
+Tiempo para mover 30 grados: 404 ms
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.35
+Angulo inicial barra: -20.391 grados
+Angulo servo: 12221 grados
+Angulo final: 9.903 grados
 Tiempo para mover 30 grados: 402 ms
-Angulo inicial: -19.990 grados
-Angulo final: 10.693 grados
-Tiempo para mover 30 grados: 398 ms
-Angulo inicial: -20.043 grados
-Angulo final: 11.367 grados
-Tiempo para mover 30 grados: 404 ms
-Angulo inicial: -20.105 grados
-Angulo final: 11.042 grados
-Tiempo para mover 30 grados: 416 ms
-Angulo inicial: -20.076 grados
-Angulo final: 10.079 grados
-Tiempo para mover 30 grados: 412 ms
-Angulo inicial: -20.103 grados
-Angulo final: 10.972 grados
-Tiempo para mover 30 grados: 404 ms
-Angulo inicial: -20.065 grados
-Angulo final: 11.954 grados
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.50
+Angulo inicial barra: -20.464 grados
+Angulo servo: 12221 grados
+Angulo final: 9.545 grados
 Tiempo para mover 30 grados: 400 ms
-Angulo inicial: -20.071 grados
-Angulo final: 10.014 grados
-Tiempo para mover 30 grados: 390 ms
-Angulo inicial: -19.908 grados
-Angulo final: 11.016 grados
-Tiempo para mover 30 grados: 398 ms
-Angulo inicial: -20.075 grados
-Angulo final: 10.495 grados
-Tiempo para mover 30 grados: 412 ms
-Angulo inicial: -20.218 grados
-Angulo final: 10.604 grados
-Tiempo para mover 30 grados: 386 ms
-Angulo inicial: -19.863 grados
-Angulo final: 11.288 grados
-Tiempo para mover 30 grados: 398 ms
-Angulo inicial: -19.767 grados
-Angulo final: 12.812 grados
-Tiempo para mover 30 grados: 411 ms
-Angulo inicial: -20.075 grados
-Angulo final: 10.523 grados
-Tiempo para mover 30 grados: 381 ms
-Angulo inicial: -20.016 grados
-Angulo final: 10.855 grados
-Tiempo para mover 30 grados: 377 ms
-Angulo inicial: -19.971 grados
-Angulo final: 10.784 grados
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.53
+Angulo inicial barra: -20.646 grados
+Angulo servo: 12221 grados
+Angulo final: 10.787 grados
+Tiempo para mover 30 grados: 403 ms
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.37
+Angulo inicial barra: -20.441 grados
+Angulo servo: 12221 grados
+Angulo final: 10.517 grados
+Tiempo para mover 30 grados: 424 ms
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.42
+Angulo inicial barra: -20.513 grados
+Angulo servo: 12221 grados
+Angulo final: 9.519 grados
+Tiempo para mover 30 grados: 395 ms
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.53
+Angulo inicial barra: -4.355 grados
+Angulo servo: 12221 grados
+Angulo final: 68.309 grados
+Tiempo para mover 30 grados: 1969 ms
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -1.46
+Angulo inicial barra: -20.330 grados
+Angulo servo: 12221 grados
+Angulo final: 10.934 grados
 Tiempo para mover 30 grados: 404 ms
-Angulo inicial: -19.984 grados
-Angulo final: 10.386 grados
-Tiempo para mover 30 grados: 389 ms
-Angulo inicial: -19.845 grados
-Angulo final: 10.316 grados
-Tiempo para mover 30 grados: 378 ms
-Angulo inicial: -19.815 grados
-Angulo final: 10.253 grados
-Tiempo para mover 30 grados: 378 ms
-Angulo inicial: -20.019 grados
-Angulo final: 10.689 grados
+Movimiento del servo: -106grados
+Relacion entre movimiento de barra y servo: -3.39
+
 
 Potenciometro
 Lectura: 3.524 V / 190.293 deg  Tiempo: 212us
