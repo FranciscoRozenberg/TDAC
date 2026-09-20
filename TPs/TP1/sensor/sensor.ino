@@ -81,6 +81,6 @@ void loop() {
   Serial.print("Desvio estandar distancia: ");
   Serial.print(sqrt(varianza_distancia));
   Serial.println(" cm");
-  delay(50);
+  delay(500);
 }
 

@@ -1,0 +1,443 @@
+30 grados
+Angulo final: 10.147 grados
+Tiempo para mover 30 grados: 390 ms
+Angulo inicial: -18.518 grados
+Angulo final: 11.826 grados
+Tiempo para mover 30 grados: 412 ms
+Angulo inicial: -19.402 grados
+Angulo final: -70.281 grados
+Tiempo para mover 30 grados: 76 ms
+Angulo inicial: -19.823 grados
+Angulo final: 10.600 grados
+Tiempo para mover 30 grados: 66 ms
+Angulo inicial: -18.659 grados
+Angulo inicial: -20.095 grados
+Angulo final: 11.626 grados
+Tiempo para mover 30 grados: 416 ms
+Angulo inicial: -20.090 grados
+Angulo final: 10.862 grados
+Tiempo para mover 30 grados: 402 ms
+Angulo inicial: -19.990 grados
+Angulo final: 10.693 grados
+Tiempo para mover 30 grados: 398 ms
+Angulo inicial: -20.043 grados
+Angulo final: 11.367 grados
+Tiempo para mover 30 grados: 404 ms
+Angulo inicial: -20.105 grados
+Angulo final: 11.042 grados
+Tiempo para mover 30 grados: 416 ms
+Angulo inicial: -20.076 grados
+Angulo final: 10.079 grados
+Tiempo para mover 30 grados: 412 ms
+Angulo inicial: -20.103 grados
+Angulo final: 10.972 grados
+Tiempo para mover 30 grados: 404 ms
+Angulo inicial: -20.065 grados
+Angulo final: 11.954 grados
+Tiempo para mover 30 grados: 400 ms
+Angulo inicial: -20.071 grados
+Angulo final: 10.014 grados
+Tiempo para mover 30 grados: 390 ms
+Angulo inicial: -19.908 grados
+Angulo final: 11.016 grados
+Tiempo para mover 30 grados: 398 ms
+Angulo inicial: -20.075 grados
+Angulo final: 10.495 grados
+Tiempo para mover 30 grados: 412 ms
+Angulo inicial: -20.218 grados
+Angulo final: 10.604 grados
+Tiempo para mover 30 grados: 386 ms
+Angulo inicial: -19.863 grados
+Angulo final: 11.288 grados
+Tiempo para mover 30 grados: 398 ms
+Angulo inicial: -19.767 grados
+Angulo final: 12.812 grados
+Tiempo para mover 30 grados: 411 ms
+Angulo inicial: -20.075 grados
+Angulo final: 10.523 grados
+Tiempo para mover 30 grados: 381 ms
+Angulo inicial: -20.016 grados
+Angulo final: 10.855 grados
+Tiempo para mover 30 grados: 377 ms
+Angulo inicial: -19.971 grados
+Angulo final: 10.784 grados
+Tiempo para mover 30 grados: 404 ms
+Angulo inicial: -19.984 grados
+Angulo final: 10.386 grados
+Tiempo para mover 30 grados: 389 ms
+Angulo inicial: -19.845 grados
+Angulo final: 10.316 grados
+Tiempo para mover 30 grados: 378 ms
+Angulo inicial: -19.815 grados
+Angulo final: 10.253 grados
+Tiempo para mover 30 grados: 378 ms
+Angulo inicial: -20.019 grados
+Angulo final: 10.689 grados
+
+Potenciometro
+Lectura: 3.524 V / 190.293 deg  Tiempo: 212us
+Lectura: 3.524 V �Lectura: 3.524 V / 190.293 deg  Tiempo: 212us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 112us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 112us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 112us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 120us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 116us
+Lectura: 3.524 V / 190.293 deg  Tiempo: 112us
+
+IMU
+Calibracion terminada
+Sesgo X: -0.026998
+Angulo: -0.0616  Tiempo: 3360 us
+Angulo: -0.1154  Tiempo: 3380 us
+Angulo: -0.1603  Tiempo: 3372 us
+Angulo: -0.2036  Tiempo: 3364 us
+Angulo: -0.2204  Tiempo: 3356 us
+Angulo: -0.2370  Tiempo: 3368 us
+Angulo: -0.2753  Tiempo: 3376 us
+Angulo: -0.2818  Tiempo: 3364 us
+Angulo: -0.2936  Tiempo: 3368 us
+Angulo: -0.2917  Tiempo: 3364 us
+Angulo: -0.2998  Tiempo: 3364 us
+Angulo: -0.3095  Tiempo: 3372 us
+Angulo: -0.3315  Tiempo: 3380 us
+Angulo: -0.3326  Tiempo: 3368 us
+Angulo: -0.3352  Tiempo: 3368 us
+Angulo: -0.3273  Tiempo: 3364 us
+Angulo: -0.3172  Tiempo: 3384 us
+Angulo: -0.3495  Tiempo: 3376 us
+Angulo: -0.3489  Tiempo: 3364 us
+Angulo: -0.3534  Tiempo: 3372 us
+Angulo: -0.3486  Tiempo: 3372 us
+Angulo: -0.3416  Tiempo: 3372 us
+Angulo: -0.3491  Tiempo: 3380 us
+Angulo: -0.3677  Tiempo: 3376 us
+Angulo: -0.3796  Tiempo: 3376 us
+Angulo: -0.3551  Tiempo: 3352 us
+Angulo: -0.3628  Tiempo: 3368 us
+Angulo: -0.3615  Tiempo: 3368 us
+Angulo: -0.3717  Tiempo: 3372 us
+Angulo: -0.3941  Tiempo: 3376 us
+Angulo: -0.3810  Tiempo: 3380 us
+Angulo: -0.3966  Tiempo: 3376 us
+Angulo: -0.3966  Tiempo: 3388 us
+Angulo: -0.4057  Tiempo: 3384 us
+Angulo: -0.4123  Tiempo: 3364 us
+Angulo: -0.4078  Tiempo: 3368 us
+Angulo: -0.3999  Tiempo: 3372 us
+Angulo: -0.4016  Tiempo: 3372 us
+Angulo: -0.3876  Tiempo: 3376 us
+Angulo: -0.3720  Tiempo: 3360 us
+Angulo: -0.3817  Tiempo: 3380 us
+Angulo: -0.4005  Tiempo: 3372 us
+Angulo: -0.3856  Tiempo: 3360 us
+Angulo: -0.3846  Tiempo: 3372 us
+Angulo: -0.3813  Tiempo: 3376 us
+Angulo: -0.3867  Tiempo: 3368 us
+Angulo: -0.3932  Tiempo: 3368 us
+Angulo: -0.4027  Tiempo: 3384 us
+Angulo: -0.3969  Tiempo: 3372 us
+Angulo: -0.3781  Tiempo: 3356 us
+Angulo: -0.3758  Tiempo: 3364 us
+Angulo: -0.3674  Tiempo: 3372 us
+Angulo: -0.3629  Tiempo: 3372 us
+Angulo: -0.3733  Tiempo: 3368 us
+Angulo: -0.3824  Tiempo: 3368 us
+Angulo: -0.3729  Tiempo: 3384 us
+Angulo: -0.3665  Tiempo: 3376 us
+Angulo: -0.3688  Tiempo: 3364 us
+Angulo: -0.3527  Tiempo: 3364 us
+Angulo: -0.3748  Tiempo: 3384 us
+Angulo: -0.3709  Tiempo: 3376 us
+Angulo: -0.3680  Tiempo: 3376 us
+Angulo: -0.3461  Tiempo: 3376 us
+Angulo: -0.3607  Tiempo: 3396 us
+Angulo: -0.3978  Tiempo: 3372 us
+Angulo: -0.3904  Tiempo: 3364 us
+Angulo: -0.4048  Tiempo: 3372 us
+Angulo: -0.3967  Tiempo: 3380 us
+Angulo: -0.3923  Tiempo: 3372 us
+Angulo: -0.3760  Tiempo: 3372 us
+Angulo: -0.3826  Tiempo: 3364 us
+Angulo: -0.3995  Tiempo: 3388 us
+Angulo: -0.3907  Tiempo: 3368 us
+Angulo: -0.3781  Tiempo: 3356 us
+Angulo: -0.3678  Tiempo: 3364 us
+Angulo: -0.3523  Tiempo: 3376 us
+Angulo: -0.3601  Tiempo: 3372 us
+Angulo: -0.3569  Tiempo: 3376 us
+Angulo: -0.3586  Tiempo: 3376 us
+Angulo: -0.3405  Tiempo: 3372 us
+Angulo: -0.3544  Tiempo: 3376 us
+Angulo: -0.3609  Tiempo: 3376 us
+Angulo: -0.3709  Tiempo: 3372 us
+Angulo: -0.3766  Tiempo: 3368 us
+Angulo: -0.3757  Tiempo: 3368 us
+Angulo: -0.3757  Tiempo: 3380 us
+Angulo: -0.3800  Tiempo: 3384 us
+Angulo: -0.3969  Tiempo: 3380 us
+Angulo: -0.3739  Tiempo: 3356 us
+Angulo: -0.3541  Tiempo: 3368 us
+Angulo: -0.3664  Tiempo: 3376 us
+Angulo: -0.3335  Tiempo: 3372 us
+Angulo: -0.3443  Tiempo: 3384 us
+Angulo: -0.3519  Tiempo: 3376 us
+Angulo: -0.3571  Tiempo: 3384 us
+Angulo: -0.3664  Tiempo: 3372 us
+Angulo: -0.3670  Tiempo: 3368 us
+Angulo: -0.3736  Tiempo: 3372 us
+Angulo: -0.3645  Tiempo: 3372 us
+Angulo: -0.3692  Tiempo: 3372 us
+Angulo: -0.3780  Tiempo: 3372 us
+Angulo: -0.3826  Tiempo: 3372 us
+Angulo: -0.3709  Tiempo: 3372 us
+Angulo: -0.3670  Tiempo: 3380 us
+Angulo: -0.3915  Tiempo: 3372 us
+Angulo: -0.3857  Tiempo: 3364 us
+Angulo: -0.3885  Tiempo: 3376 us
+Angulo: -0.3852  Tiempo: 3372 us
+Angulo: -0.3905  Tiempo: 3372 us
+Angulo: -0.4081  Tiempo: 3376 us
+Angulo: -0.4315  Tiempo: 3396 us
+Angulo: -0.4379  Tiempo: 3380 us
+Angulo: -0.4155  Tiempo: 3364 us
+Angulo: -0.3967  Tiempo: 3356 us
+Angulo: -0.4128  Tiempo: 3380 us
+Angulo: -0.4095  Tiempo: 3376 us
+Angulo: -0.3960  Tiempo: 3368 us
+Angulo: -0.3974  Tiempo: 3368 us
+Angulo: -0.3945  Tiempo: 3388 us
+Angulo: -0.3996  Tiempo: 3364 us
+Angulo: -0.3900  Tiempo: 3364 us
+Angulo: -0.4031  Tiempo: 3380 us
+Angulo: -0.3996  Tiempo: 3380 us
+Angulo: -0.3995  Tiempo: 3372 us
+Angulo: -0.4110  Tiempo: 3380 us
+Angulo: -0.4145  Tiempo: 3364 us
+Angulo: -0.3992  Tiempo: 3380 us
+Angulo: -0.4018  Tiempo: 3368 us
+Angulo: -0.4176  Tiempo: 3372 us
+Angulo: -0.3961  Tiempo: 3364 us
+Angulo: -0.3743  Tiempo: 3372 us
+Angulo: -0.3661  Tiempo: 3376 us
+Angulo: -0.3639  Tiempo: 3392 us
+Angulo: -0.3586  Tiempo: 3376 us
+Angulo: -0.3634  Tiempo: 3392 us
+Angulo: -0.3583  Tiempo: 3372 us
+Angulo: -0.3732  Tiempo: 3380 us
+Angulo: -0.3775  Tiempo: 3372 us
+Angulo: -0.3790  Tiempo: 3376 us
+Angulo: -0.3646  Tiempo: 3372 us
+Angulo: -0.3739  Tiempo: 3384 us
+Angulo: -0.3816  Tiempo: 3368 us
+Angulo: -0.3845  Tiempo: 3384 us
+Angulo: -0.3760  Tiempo: 3376 us
+Angulo: -0.3585  Tiempo: 3364 us
+Angulo: -0.3720  Tiempo: 3364 us
+Angulo: -0.3614  Tiempo: 3388 us
+Angulo: -0.3708  Tiempo: 3376 us
+Angulo: -0.3960  Tiempo: 3388 us
+Angulo: -0.4079  Tiempo: 3376 us
+Angulo: -0.4014  Tiempo: 3392 us
+Angulo: -0.4060  Tiempo: 3380 us
+Angulo: -0.3974  Tiempo: 3360 us
+Angulo: -0.3973  Tiempo: 3364 us
+Angulo: -0.4015  Tiempo: 3376 us
+Angulo: -0.4097  Tiempo: 3384 us
+Angulo: -0.4041  Tiempo: 3376 us
+Angulo: -0.4106  Tiempo: 3368 us
+Angulo: -0.4140  Tiempo: 3380 us
+Angulo: -0.3874  Tiempo: 3364 us
+Angulo: -0.3883  Tiempo: 3376 us
+Angulo: -0.3983  Tiempo: 3380 us
+Angulo: -0.3890  Tiempo: 3380 us
+Angulo: -0.3897  Tiempo: 3368 us
+Angulo: -0.3879  Tiempo: 3368 us
+Angulo: -0.4144  Tiempo: 3384 us
+Angulo: -0.4303  Tiempo: 3380 us
+Angulo: -0.4155  Tiempo: 3364 us
+Angulo: -0.4100  Tiempo: 3376 us
+Angulo: -0.4054  Tiempo: 3376 us
+Angulo: -0.3955  Tiempo: 3376 us
+Angulo: -0.4069  Tiempo: 3372 us
+Angulo: -0.3821  Tiempo: 3368 us
+Angulo: -0.3979  Tiempo: 3392 us
+Angulo: -0.4064  Tiempo: 3388 us
+Angulo: -0.3884  Tiempo: 3372 us
+Angulo: -0.3706  Tiempo: 3360 us
+Angulo: -0.3575  Tiempo: 3372 us
+Angulo: -0.3633  Tiempo: 3372 us
+Angulo: -0.3876  Tiempo: 3380 us
+Angulo: -0.3771  Tiempo: 3368 us
+Angulo: -0.3659  Tiempo: 3392 us
+Angulo: -0.3803  Tiempo: 3376 us
+Angulo: -0.3655  Tiempo: 3360 us
+Angulo: -0.3552  Tiempo: 3364 us
+Angulo: -0.3682  Tiempo: 3388 us
+Angulo: -0.3717  Tiempo: 3384 us
+Angulo: -0.3624  Tiempo: 3376 us
+Angulo: -0.3626  Tiempo: 3384 us
+Angulo: -0.3490  Tiempo: 3380 us
+Angulo: -0.3506  Tiempo: 3372 us
+Angulo: -0.3557  Tiempo: 3368 us
+Angulo: -0.3531  Tiempo: 3364 us
+Angulo: -0.3498  Tiempo: 3388 us
+Angulo: -0.3315  Tiempo: 3360 us
+Angulo: -0.3423  Tiempo: 3384 us
+Angulo: -0.3339  Tiempo: 3364 us
+Angulo: -0.3406  Tiempo: 3384 us
+Angulo: -0.3511  Tiempo: 3372 us
+Angulo: -0.3680  Tiempo: 3384 us
+
+Promedio angulo: -0.3696 grados
+Promedio tiempo: 3373.52 us
+Varianza angular: 0.002092 grados^2
+Desvio estandar: 0.0457 grados
+
+
+
+SENSOR DISTANCIA
+Promedio tiempo: 718.33 us
+Varianza tiempo: 33.16 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.76 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.25 us
+Varianza tiempo: 31.23 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.59 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.25 us
+Varianza tiempo: 32.72 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.72 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.68 us
+Varianza tiempo: 45.98 us^2
+Promedio distancia: 12.27 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 6.78 us
+Desvio estandar distancia: 0.12 cm
+Promedio tiempo: 717.56 us
+Varianza tiempo: 24.59 us^2
+Promedio distancia: 12.25 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 4.96 us
+Desvio estandar distancia: 0.08 cm
+Promedio tiempo: 718.07 us
+Varianza tiempo: 32.30 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.68 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.20 us
+Varianza tiempo: 42.45 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 6.52 us
+Desvio estandar distancia: 0.11 cm
+Promedio tiempo: 718.79 us
+Varianza tiempo: 36.86 us^2
+Promedio distancia: 12.27 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 6.07 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 717.64 us
+Varianza tiempo: 20.66 us^2
+Promedio distancia: 12.25 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 4.55 us
+Desvio estandar distancia: 0.08 cm
+Promedio tiempo: 718.81 us
+Varianza tiempo: 50.63 us^2
+Promedio distancia: 12.27 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 7.12 us
+Desvio estandar distancia: 0.12 cm
+Promedio tiempo: 717.72 us
+Varianza tiempo: 25.45 us^2
+Promedio distancia: 12.25 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.05 us
+Desvio estandar distancia: 0.09 cm
+Promedio tiempo: 717.80 us
+Varianza tiempo: 31.31 us^2
+Promedio distancia: 12.25 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.60 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.52 us
+Varianza tiempo: 42.44 us^2
+Promedio distancia: 12.27 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 6.51 us
+Desvio estandar distancia: 0.11 cm
+Promedio tiempo: 718.25 us
+Varianza tiempo: 35.50 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.96 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.31 us
+Varianza tiempo: 32.16 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.67 us
+Desvio estandar distancia: 0.10 cm
+Promedio tiempo: 718.33 us
+Varianza tiempo: 34.86 us^2
+Promedio distancia: 12.26 cm
+Varianza distancia: 0.01 cm^2
+Desvio estandar tiempo: 5.90 us
+Desvio estandar distancia: 0.10 cm
+
+100 floats
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28496 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28496 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28496 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28496 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?���?
+Tiempo de transmision: 28500 us
+

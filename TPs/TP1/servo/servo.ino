@@ -14,6 +14,8 @@ const int POSICION_INICIAL = 2200;  // us
 const int POSICION_FINAL = 1100;    // us
 float sesgo_x = 0;
 
+unsigned long t_inicial = 0; //us
+
 void setup() {
   Serial.begin(115200);
   while (!Serial) {
@@ -62,37 +64,38 @@ void loop() {
   delay((T_MUESTREO - (t_final - t_inicial)) / 1000);
 
   // diferencial de 30 grados
+  // tiempo en moverse 30 deg: 378ms ~ 416ms
 
-  // servo.writeMicroseconds(POSICION_INICIAL);
-  // delay(1000);
-  // sensors_event_t a, g, temp;
-  // mpu.getEvent(&a, &g, &temp);
-  // float angulo_inicial =atan2(a.acceleration.y, a.acceleration.z)* 180.0 / PI;
+//   servo.writeMicroseconds(POSICION_INICIAL);
+//   delay(1000);
+//   sensors_event_t a, g, temp;
+//   mpu.getEvent(&a, &g, &temp);
+//   float angulo_inicial =atan2(a.acceleration.y, a.acceleration.z)* 180.0 / PI;
   
-  // Serial.print("Angulo inicial: ");
-  // Serial.print(angulo_inicial, 3);
-  // Serial.println(" grados");
+//   Serial.print("Angulo inicial: ");
+//   Serial.print(angulo_inicial, 3);
+//   Serial.println(" grados");
 
-  // unsigned long t_inicial = 0;
-  // for (int i = 0; i < 100; i++) {
-  //   if (i == 0) {
-  //     t_inicial = millis();
-  //     servo.writeMicroseconds(POSICION_FINAL);
-  //   } else {
-  //     mpu.getEvent(&a, &g, &temp);
-  //     float angulo_final =atan2(a.acceleration.y, a.acceleration.z)* 180.0 / PI;
-  //     if (abs(angulo_final - angulo_inicial) > 30) {
-  //       unsigned long t_final = millis();
-  //       Serial.print("Angulo final: ");
-  //       Serial.print(angulo_final, 3);
-  //       Serial.println(" grados");
-  //       Serial.print("Tiempo para mover 30 grados: ");
-  //       Serial.print(t_final - t_inicial-1);//RESTO 1 SON LOS DELAYS
-  //       Serial.println(" ms");
-  //       break;
-  //     }
-  //     delay(1);
-  //   }
-  // }
-  //delay(10000);
+
+//   for (int i = 0; i < 100; i++) {
+//     if (i == 0) {
+//       t_inicial = millis();
+//       servo.writeMicroseconds(POSICION_FINAL);
+//     } else {
+//       mpu.getEvent(&a, &g, &temp);
+//       float angulo_final =atan2(a.acceleration.y, a.acceleration.z)* 180.0 / PI;
+//       if (abs(angulo_final - angulo_inicial) > 30) {
+//         unsigned long t_final = millis();
+//         Serial.print("Angulo final: ");
+//         Serial.print(angulo_final, 3);
+//         Serial.println(" grados");
+//         Serial.print("Tiempo para mover 30 grados: ");
+//         Serial.print(t_final - t_inicial-1);//RESTO 1 SON LOS DELAYS
+//         Serial.println(" ms");
+//         break;
+//       }
+//       delay(1);
+//     }
+//   }
+//   delay(10000);
 }

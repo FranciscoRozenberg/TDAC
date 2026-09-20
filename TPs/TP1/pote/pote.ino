@@ -2,7 +2,7 @@
 
 void setup() {
 
-  Serial.begin(2000000);
+  Serial.begin(115200);
   pinMode(PIN_POTE, "input");
 
 }
@@ -15,14 +15,21 @@ void loop() {
   // niveles posibles: de 0 a 1023.
   // Por lo tanto, la mínima variacion de tension que puede distinguir el ADC es:
   // DeltaV=5V/1024 => DeltaV = 4.88mV
+  // Sin embargo, el piso de ruido es de +/- 10mV
+  // DeltaDeg=270/1024 => DeltaDeg = 0,166
+  // Piso de ruido es de +/- 0,2
+  //
   
   unsigned long t_inicial = micros();
-  int lectura = analogRead(A0);
+  float lectura = analogRead(A0);
   unsigned long t_final = micros();
+
   Serial.print("Lectura: ");
-  Serial.print(lectura);
+  Serial.print(lectura*5/1023,3);
+  Serial.print(" V / ");
+  Serial.print(lectura*270/1023,3);
+  Serial.print(" deg");
   Serial.print("  Tiempo: ");
   Serial.print(t_final - t_inicial);
-  Serial.println(" us");
-  delay(1000);
+  Serial.println( "us");
 }
