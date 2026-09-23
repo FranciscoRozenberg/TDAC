@@ -49,20 +49,20 @@ void loop() {
 
   //mınima precision angular
   
-  // unsigned long t_inicial = micros();
-  // static int T_BARRA = 1500;  //RECTO   
-  // static int contador = 0;   
-  // contador++;   
-  // if (contador == 50) {
-  //   contador = 0;     
-  //   if (T_BARRA == 1500) {       
-  //     T_BARRA = 1520;     
-  //    } else {T_BARRA = 1500;}   
-  // }   
-  // servo.writeMicroseconds(T_BARRA);
-  // unsigned long t_final = micros();   
-  // delay((T_MUESTREO - (t_final - t_inicial)) / 1000);
-
+   unsigned long t_inicial = micros();
+   static int T_BARRA = 1500;  //RECTO   
+   static int contador = 0;   
+   contador++;   
+   if (contador == 50) {
+     contador = 0;     
+     if (T_BARRA == 1500) {       
+       T_BARRA = 1520;     
+      } else {T_BARRA = 1500;}   
+   }   
+   servo.writeMicroseconds(T_BARRA);
+   unsigned long t_final = micros();   
+   delay((T_MUESTREO - (t_final - t_inicial)) / 1000);
+}
   // diferencial de 30 grados
   // tiempo en moverse 30 deg: 378ms ~ 416ms
 
