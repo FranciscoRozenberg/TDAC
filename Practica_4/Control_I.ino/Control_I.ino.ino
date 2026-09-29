@@ -20,14 +20,6 @@ const float tiempo_1cm = 29.287;  //us
 const unsigned long T_MUESTREO = 20000;  //20ms=50 Hz
 float sesgo_x = 0;
 
-//VARIABLES DE CONTROL
-float alpha_anterior = 0; //grados - SALIDA IMU
-float error_anterior = 0;
-
-float ref = 0; //grados
-
-
-
 //SETUP
 void setup() {
   Serial.begin(115200);
@@ -83,30 +75,55 @@ void matlab_send(float dato1,float dato2,float dato3,float dato4,float dato5) {
 
 
 void loop() {
-  int t_inicial = micros();
 
+  //VARIABLES DE CONTROL
+  static float ref = 0; //grados
+  static float alpha_anterior = 0;
+  static float error_anterior = 0;
+  static float u_anterior = 90;
+  static int contador = 0;
+
+  if (contador >= 300) {
+      contador = 0;
+      if (ref == 0) {
+          ref = 10;
+      } else {
+          ref = 0;
+      }
+  }
+  contador++;
+
+  unsigned long t_inicial = micros();
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
-  float alpha_a = atan2(a.acceleration.y,a.acceleration.z);
-  float alpha = alpha_anterior + (g.gyro.x - sesgo_x) *(T_MUESTREO * 1e-6);
+  float alpha_a = atan2(a.acceleration.y, a.acceleration.z);
+  float alpha = alpha_anterior+ (g.gyro.x - sesgo_x) * (T_MUESTREO * 1e-6);
   float R = 0.85;
-  alpha = alpha * R +alpha_a * (1 - R);
-    
-  Serial.println(alpha*180/3.14);
+  alpha = R * alpha + (1 - R) * alpha_a;
 
-  float coef = 0.01;
+  float alpha_grados = alpha * 180.0 / PI;
+  float error = ref - alpha_grados;
 
-  float error = ref - alpha*180/3.14;
+  float K =5;
+  float T = T_MUESTREO * 1e-6;
 
-  float u_k = (coef * error + coef*error_anterior + alpha_anterior*180/3.14);
+  float u_k = u_anterior-(K * T / 2) * error-(K * T / 2) * error_anterior;
+  // float K = 3.4;
+  // float u_k = 90 - K * error;
+  u_k = constrain(u_k, 45, 120);
+  servo.write((int)u_k);
 
-  servo.write(u_k);
-
-  Serial.println(u_k);
-  
-  error_anterior = error;
   alpha_anterior = alpha;
+  error_anterior = error;
+  u_anterior = u_k;
 
-  int t_final = micros();
-  delayMicroseconds(T_MUESTREO-(t_final-t_inicial));
+  Serial.print("IMU: ");
+  Serial.print(alpha_grados);
+  Serial.print("  Error: ");
+  Serial.print(error);
+  Serial.print("  Servo: ");
+  Serial.println(u_k);
+
+  unsigned long t_final = micros();
+  delayMicroseconds(T_MUESTREO - (t_final - t_inicial));
 }
