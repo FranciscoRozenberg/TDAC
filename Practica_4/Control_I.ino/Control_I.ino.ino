@@ -3,6 +3,13 @@
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
+#include <NewPing.h>
+
+//Ultrasonico
+#define TRIGGER_PIN 6
+#define ECHO_PIN 7
+#define MAX_DISTANCE 400  //cm
+
 //PINES
 #define PWM_PIN 5
 #define TRIGGER_PIN 6
@@ -19,6 +26,13 @@ const int posicion_inicial = 1500; //us
 const float tiempo_1cm = 29.287;  //us
 const unsigned long T_MUESTREO = 20000;  //20ms=50 Hz
 float sesgo_x = 0;
+
+//Ultrasonico
+const float tiempo_1cm = 29.287;         //us
+const unsigned long T_MUESTREO = 20000;  //20ms=50 Hz
+
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+
 
 //SETUP
 void setup() {
@@ -104,7 +118,7 @@ void loop() {
   float alpha_grados = alpha * 180.0 / PI;
   float error = ref - alpha_grados;
 
-  float K =5;
+  float K =10;
   float T = T_MUESTREO * 1e-6;
 
   float u_k = u_anterior-(K * T / 2) * error-(K * T / 2) * error_anterior;
