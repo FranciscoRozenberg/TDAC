@@ -60,47 +60,56 @@ void loop() {
 
   //VARIABLES DE CONTROL
   static float ref = 16; //cm
-  static float u_anterior = 90;
+  static float u_anterior = 0;
   static float u_anterior2 = 0;
   static float e_anterior = 0;
   static float e_anterior2 = 0;
-
+  static unsigned long tiempo_anterior_inicial = 0;
+  static unsigned long t_final = 0;
 
   unsigned long t_inicial = micros();
-
   float distancia = sonar.ping(MAX_DISTANCE) / 2.0 / tiempo_1cm;
-
   float e_actual = ref - distancia;
 
+  // CONTROL PROPORCIONAL
+  // float Kp = 2.7; // periodo de oscilacion 1.65 segundos => frecuencia de 0.606 Hz
+  // float delta_Uk = Kp * e_actual;
+
+  // CONTROL PI
+  // float T = T_MUESTREO * 1e-6;
+  // float Kp = 2;
+  // float Ki = 1 ;
+  // float delta_Uk = u_anterior + (Kp + Ki*T/2) *e_actual + (-Kp + Ki*T/2) *e_anterior;
+
+  // CONTROL PID
   float T = T_MUESTREO * 1e-6;
-  float T0 = 1.25;
-  float K  = 3.7;
-  float Kp = K*.6;
-  float Ki = K*1.2/T0;
-  float Kd = 3*K*T0/40;
+  float Kp = 2;
+  float Ki = 1;
+  float Kd = 0.0001;
+  float delta_Uk = (u_anterior2 + (Kp + Ki*T/2 + 2*Kd/T) *e_actual + (Ki*T - 4 * Kd/T) *e_anterior + (-Kp + Ki*T/2 + 2*Kd/T) *e_anterior2);
 
-  float u_k = 90 + (u_anterior2 + (Kp + Ki*T/2 + 2*Kd/T) *e_actual + (Ki*T - 4 * Kd/T) *e_anterior + (-Kp + Ki*T/2 + 2*Kd/T) *e_anterior2);
+  //Ajuste PID Ziegler-Nichols
+  // float T = T_MUESTREO * 1e-6;
+  // float T0 = 1.65;
+  // float K  = 2.7;
+  // float Kp = K*0.6;
+  // float Ki = K*1.2/T0;
+  // float Kd = 3*K*T0/40;
+  // float delta_Uk = (u_anterior2 + (Kp + Ki*T/2 + 2*Kd/T) *e_actual + (Ki*T - 4 * Kd/T) *e_anterior + (-Kp + Ki*T/2 + 2*Kd/T) *e_anterior2);
 
-  // float K = 3.4;
-  // float u_k = 90 + K * e_actual;
-
-
-  u_k = constrain(u_k, 45, 120);
+  float u_k = 90 + delta_Uk;
+  u_k = constrain(u_k, 50, 160);
   servo.write((int)u_k);
+
+  matlab_send(distancia,delta_Uk,e_actual,u_k,(T_MUESTREO - (t_final -  tiempo_anterior_inicial)));
 
   e_anterior2 = e_anterior;
   e_anterior = e_actual;
   u_anterior2 = u_anterior;
-  u_anterior = u_k;
+  u_anterior = delta_Uk;
 
-  // Serial.print("Distancia: ");
-  static bool flag;
-  matlab_send(distancia,0,0,0,0);
-  // Serial.print("  Error: ");
-  // Serial.print(e_actual);
-  // Serial.print("  Servo: ");
-  // Serial.println(u_k);
-
-  unsigned long t_final = micros();
-  delayMicroseconds(T_MUESTREO - (t_final - t_inicial));
+  tiempo_anterior_inicial=t_inicial;
+  delayMicroseconds(T_MUESTREO-16383);
+  t_final = micros();
+  delayMicroseconds((T_MUESTREO - (t_final - t_inicial))); //valores menosres a 16k
 }
