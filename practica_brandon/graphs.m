@@ -1,6 +1,7 @@
+clear all;close all;clc 
 out=load("alpha.mat");
-alphak = out.out.d1;
-alphaa = out.out.d2;
+alpha_k = out.out.d1;
+alpha_a = out.out.d2;
 alpha = out.out.d3;
 
 %stairs(alpha)
@@ -86,6 +87,8 @@ K_dc = (b1 + b2) / (1 + a1 + a2);
 % Mapeo de polos a tiempo continuo: s = ln(z) / Ts
 polos_z = roots(den_d);
 polos_s = log(polos_z) / Ts;
+disp(polos_z);
+disp(polos_s);
 
 % Polinomio continuo ddbae 2do orden sin ceros
 den_s = real(poly(polos_s));  % [1, 2*zeta*wn, wn^2]
@@ -201,8 +204,8 @@ legend('Location', 'NorthEast');
 %% Controlador
 s = tf('s');
 
-C_s = 1/s
-C_d = c2d(C_s, Ts, 'Tustin')
+C_s = 1/s;
+C_d = c2d(C_s, Ts, 'Tustin');
 
 G_d = c2d(G_s, Ts, 'Tustin');
 

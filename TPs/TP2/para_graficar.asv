@@ -1,0 +1,83 @@
+clear; close all; clc
+
+%% Cargar los tres ensayos
+archivos = ["Barra_carro10.mat", ...
+            "Barra_carro-10.mat", ...
+            "Barra_carro30.mat"];
+
+nombres = ["Ensayo 10°", "Ensayo -10°", "Ensayo 30°"];
+
+inicio = [550, 550, 550];
+fin    = [670, 670, 628];
+
+retardo = 0;
+
+%% Planta continua identificada
+s = tf('s');
+
+p1 = 0.6202;
+p2 = -6.4049;
+K_cont = 16.93;
+
+G_s_id = K_cont/((s-p1)*(s-p2));
+
+%% Procesamiento de los datos
+for i = 1:3
+
+    datos = load(archivos(i));
+    datos = datos.out;
+
+    t = datos.tout(inicio(i):fin(i));
+    tiempo{i} = t - t(1);
+
+    angulo = datos.d3(:)*180/pi;
+
+    indices = (inicio(i)-retardo):(fin(i)-retardo);
+    u{i} = angulo(indices);
+
+    y{i} = datos.d4(inicio(i):fin(i));
+
+    y_continua{i} = lsim(G_s_id, u{i}, tiempo{i});
+end
+
+%% Figura con 6 gráficos
+figure;
+
+for i = 1:3
+    
+    
+
+    % Fila superior: mediciones experimentales
+    subplot(2,3,i);
+
+    yyaxis left
+    plot(tiempo{i}, u{i}, 'b', 'LineWidth', 1.2);
+    ylabel('Ángulo [°]');
+
+    yyaxis right
+    hold on;
+    plot(tiempo{i}, y{i}, 'k', 'LineWidth', 1.2);
+    ylabel('Distancia del carrito');
+
+    grid on;
+    xlabel('Tiempo [s]');
+    title(['Medición experimental: ', char(nombres(i))]);
+    legend('Ángulo de barra', 'Distancia', 'Location', 'best');
+
+    % Fila inferior: respuesta del modelo continuo
+    subplot(2,3,i+3);
+
+    plot(tiempo{i}, y{i}, 'k', 'LineWidth', 1.2);
+    hold on;
+    plot(tiempo{i}, y_continua{i}, 'r--', 'LineWidth', 1.5);
+
+    grid on;
+    xlabel('Tiempo [s]');
+    ylabel('Distancia del carrito');
+    title(['Modelo continuo: ', char(nombres(i))]);
+    legend('Medición experimental', ...
+           'Respuesta simulada', ...
+           'Location', 'best');
+end
+
+sgtitle('Identificación de la dinámica barra-carrito');
