@@ -5,22 +5,21 @@
 #include <Wire.h>
 #include <NewPing.h>
 
-//Ultrasonico
-#define TRIGGER_PIN 6
-#define ECHO_PIN 7
-#define MAX_DISTANCE 400  //cm
-
 //PINES
 #define PWM_PIN 5
 #define TRIGGER_PIN 6
 #define ECHO_PIN 7
-#define MAX_DISTANCE 200
+#define MAX_DISTANCE 200 //cm
+
 //CREACION DEL SERVO
 Servo servo;
+
 //SENSOR DE ULTRASONIDO
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+
 //CREACION DE LA IMU
 Adafruit_MPU6050 mpu;
+
 //VARIABLES
 const int posicion_inicial = 1500; //us
 const float tiempo_1cm = 29.287;  //us
