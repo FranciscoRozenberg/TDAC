@@ -1,7 +1,7 @@
 %save('alpha.mat') % ejecutar una sola vez
 clear; close all; clc
 inicio=170;
-fin=400;
+fin=800;
 out = load("varios_escalones.mat");
 angulo_barra = out.out.d3(:);
 
@@ -40,10 +40,10 @@ polos_z = roots([1 1+a a]);
 polos_s = log(polos_z) / Ts;
 
 p1 = 0;
-p2 = -6*polos_s(1);
+p2 = -11.5*polos_s(1);
 
 ganancia_estatica =(k)/(1 +1+a+ a);
-K_cont = 1*p2* ganancia_estatica;
+K_cont = 0.6*p2* ganancia_estatica;
 % Retardo de una muestra: 20 ms
 [num1, den1] = pade(Ts, 1);
 G_pade1 = tf(num1, den1);

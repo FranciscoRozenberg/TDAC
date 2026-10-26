@@ -23,11 +23,11 @@ t = t(:);
 
 % Modelo continuo identificado de la planta de 4 polos
 p1 = 0;
-p2 = -0.8468;
+p2 = -3.3240;
 p3 = -6.14589738845825 + 8.52381229400635i;
 p4 = -6.14589738845825 - 8.52381229400635i;
 % Ganancia de la planta
-K = 4.446*38.95;
+K = 45.91*38.95;
 
 % Construir la función de transferencia
 s = tf('s');
