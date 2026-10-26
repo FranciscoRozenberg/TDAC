@@ -7,11 +7,13 @@ distancia = out_imp.out.d1(:); % Salida real
 
 %% 2. Definición del Modelo y Controlador PI
 p1 = 0;
-p2 = -.8468;
-p3 = -8.3056 + 9.4818i;
-p4 = -8.3056 - 9.4818i;
+p2 = -3.5450;
+p3 = -6.1249 + 8.5238i;
+p4 = -6.1249 - 8.5238i;
 
-K = 4.446*56.28;
+% Ganancia de la planta
+K = 13.3*38.95;
+
 s = tf('s');
 G = K/((s-p1)*(s-p2)*(s-p3)*(s-p4));
 
