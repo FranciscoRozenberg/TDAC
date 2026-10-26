@@ -27,7 +27,7 @@ title('Entrada y salida sitema barra-carrito');
 
 N = length(y);
 
-Phi = [(y(2:N-1) - y(1:N-2)), u(1:N-2)];
+Phi = [-(y(1:N-2)-y(2:N-1)), u(1:N-2)];
 Y = y(3:N)- y(2:N-1);
 theta = pinv(Phi)*Y;
 a = theta(1);
@@ -40,10 +40,10 @@ polos_z = pole(G_z_id);
 polos_s = log(polos_z) / Ts;
 
 p1 = polos_s(1);
-p2 = (10/246)*polos_s(2);
+p2 = 0.05*polos_s(2);
 
-ganancia_estatica =(k)/(1+a);
-K_cont =-1.2*37*p2* ganancia_estatica;
+ganancia_estatica =1/Ts*((k)/(1+a));
+K_cont =-0.8*p2* ganancia_estatica;
 % Retardo de una muestra: 20 ms
 [num1, den1] = pade(Ts, 1);
 G_pade1 = tf(num1, den1);
