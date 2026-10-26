@@ -6,12 +6,12 @@ t         = out_imp.out.tout(:);
 distancia = out_imp.out.d1(:); % Salida real
 
 %% 2. Definición del Modelo y Controlador PI
-p1 = 0.6202;
-p2 = -6.4049;
+p1 = 0;
+p2 = -.8468;
 p3 = -8.3056 + 9.4818i;
 p4 = -8.3056 - 9.4818i;
 
-K = 16.03*56.28;
+K = 4.446*56.28;
 s = tf('s');
 G = K/((s-p1)*(s-p2)*(s-p3)*(s-p4));
 

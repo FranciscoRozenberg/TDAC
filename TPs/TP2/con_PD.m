@@ -1,7 +1,7 @@
 clear; close all; clc
 out = load("con_proporcional.mat");
 
-t         = out.out.tout(800:2000);
+t = out.out.tout(800:2000);
 
 % Modelo continuo identificado de la planta de 4 polos
 p1 = 0.6202;
