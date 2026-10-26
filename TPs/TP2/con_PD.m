@@ -4,13 +4,13 @@ out = load("con_proporcional.mat");
 t = out.out.tout(800:2000);
 
 % Modelo continuo identificado de la planta de 4 polos
-p1 = 0.6202;
-p2 = -6.4049;
-p3 = -8.3056 + 9.4818i;
-p4 = -8.3056 - 9.4818i;
+p1 = 0;
+p2 = -3.5450;
+p3 = -6.1249 + 8.5238i;
+p4 = -6.1249 - 8.5238i;
 
 % Ganancia de la planta
-K = 16.03*56.28;
+K = 13.3*38.95;
 
 % Construir la función de transferencia
 s = tf('s');

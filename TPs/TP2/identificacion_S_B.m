@@ -1,8 +1,9 @@
 %save('alpha.mat') % ejecutar una sola vez
 clear; close all; clc
 out = load("Escalon_servo_barra.mat");
+retardo=1;
 angulo_servo = out.out.d5(4050:4650);
-angulo_barra = (out.out.d3(4050:4650) - 0.004)*180/pi;
+angulo_barra = (out.out.d3(4050+retardo:4650+retardo) - 0.0037)*180/pi;
 t = out.out.tout(4050:4650);
 Ts = 0.02;
 
@@ -42,16 +43,15 @@ pretty(den)
 
 N = length(y);
 
-Phi = [-y(2:N-1), -y(1:N-2), u(3:N),u(2:N-1),u(1:N-2)];
+Phi = [-y(2:N-1), -y(1:N-2), u(3:N)];
 Y = y(3:N);
 theta = pinv(Phi)*Y;
 a1 = theta(1);
 a2 = theta(2);
 b0 = theta(3);
-b1 = theta(4);
-b2 = theta(5);
+
 % Planta discreta identificada por regresion
-G_z_id = tf([b0 b1 b2], [1 a1 a2], Ts);
+G_z_id = tf([b0], [1 a1 a2], Ts);
 
 polos_z = roots([1 a1 a2]);
 polos_s = log(polos_z) / Ts;
@@ -59,7 +59,7 @@ polos_s = log(polos_z) / Ts;
 p1 = 1*(polos_s(1))+0i;
 p2 = 1*(polos_s(2))-0i;
 
-ganancia_estatica = (b0 + b1 + b2)/(1 + a1 + a2);
+ganancia_estatica = (b0 )/(1 + a1 + a2);
 K_cont = 1*p1*p2* ganancia_estatica;
 % Retardo de una muestra: 20 ms
 [num1, den1] = pade(Ts, 1);
@@ -92,7 +92,7 @@ grid on;
 xlabel('Tiempo [s]');
 ylabel('Ángulo de la barra');
 legend('Medición experimental','Planta discreta identificada','Planta continua equivalente','Location', 'best');
-title('Comparación de la respuesta experimental y los modelos identificados');
+title('Comparación de la respuesta experimental y los modelos identificados con retardo');
 
 % Mostrar resultados
 disp('Coeficientes de la regresion:');

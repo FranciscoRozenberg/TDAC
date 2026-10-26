@@ -66,7 +66,18 @@ void loop() {
   static float e_anterior2 = 0;
   static unsigned long tiempo_anterior_inicial = 0;
   static unsigned long t_final = 0;
+  static int contador = 0;
 
+  if (contador == 400) {
+    contador = 0;
+    if (ref == 0) {
+      ref = 6;
+    } else {
+      ref = 0;
+    }
+  }
+  contador++;
+  
   unsigned long t_inicial = micros();
   float d = 19-5.5/2;
   float distancia = d -(sonar.ping(MAX_DISTANCE) / 2.0 / tiempo_1cm);
@@ -78,25 +89,15 @@ void loop() {
 
   // CONTROL PI
   // float T = T_MUESTREO * 1e-6;
-  // float Kp = 2;
-  // float Ki = 1 ;
+  // float Kp = 2.7;
+  // float Ki = 0.22 ;
   // float delta_Uk = u_anterior + (Kp + Ki*T/2) *e_actual + (-Kp + Ki*T/2) *e_anterior;
 
-  // CONTROL PID
+  // // CONTROL PD
   // float T = T_MUESTREO * 1e-6;
-  // float Kp = 2;
-  // float Ki = 1;
-  // float Kd = 0.0001;
-  // float delta_Uk = (u_anterior2 + (Kp + Ki*T/2 + 2*Kd/T) *e_actual + (Ki*T - 4 * Kd/T) *e_anterior + (-Kp + Ki*T/2 + 2*Kd/T) *e_anterior2);
-
-  //Ajuste PID Ziegler-Nichols
-  // float T = T_MUESTREO * 1e-6;
-  // float T0 = 1.65;
-  // float K  = 2.7;
-  // float Kp = K*0.6;
-  // float Ki = K*1.2/T0;
-  // float Kd = 3*K*T0/40;
-  // float delta_Uk = (u_anterior2 + (Kp + Ki*T/2 + 2*Kd/T) *e_actual + (Ki*T - 4 * Kd/T) *e_anterior + (-Kp + Ki*T/2 + 2*Kd/T) *e_anterior2);
+  // float Kp = 3.3;
+  // float Kd = 0.00002;
+  // float delta_Uk =u_anterior+ (Kp + 2*Kd/T) * e_actual + (-Kp + 2*Kd/T) * e_anterior;
 
   float u_k = 90 - delta_Uk;
   u_k = constrain(u_k, 50, 160);

@@ -3,11 +3,13 @@
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
+#include <math.h>
 //PINES
 #define PWM_PIN 5
 #define TRIGGER_PIN 6
 #define ECHO_PIN 7
 #define MAX_DISTANCE 35
+#define PI 3.14159265358979323846
 //CREACION DEL SERVO
 Servo servo;
 //SENSOR DE ULTRASONIDO
@@ -82,13 +84,39 @@ void loop() {
   contador++;
   //SERVO
 
-  if (contador == 600) {
-    contador = 0;
-    if (DELTA_ANGULO == 10) {
-      DELTA_ANGULO = 10;
-    } else {
-      DELTA_ANGULO = 10;
-    }
+
+  // if (contador == 40) {
+  //   contador = 0;
+  //   if (DELTA_ANGULO == 7) {
+  //     DELTA_ANGULO = -7;
+  //   } else {
+  //     DELTA_ANGULO = 7;
+  //   }
+  // }
+
+  if (contador == 200) {
+    DELTA_ANGULO = -7;
+  }
+  if (contador == 225) {
+    DELTA_ANGULO = 0;
+  }
+  if (contador == 325) {
+    DELTA_ANGULO = 11;
+  }
+  if (contador == 375) {
+    DELTA_ANGULO = 0;
+  }
+  if (contador == 475) {
+    DELTA_ANGULO = -8;
+  }
+  if (contador == 525) {
+    DELTA_ANGULO = 0;
+  }
+  if (contador == 625) {
+    DELTA_ANGULO = 10;
+  }
+  if (contador == 675) {
+    DELTA_ANGULO = 0;
   }
   servo.write(90-DELTA_ANGULO);
   //IMU
@@ -106,9 +134,10 @@ void loop() {
   alpha_a = atan2(a.acceleration.y, a.acceleration.z);
   float R = 0.95;
   alpha = (alpha + (g.gyro.x-sesgo_x) * (T_MUESTREO * 1e-6)) * R + alpha_a * (1-R);
-  matlab_send(alpha_k*180/pi,alpha_a*180/pi,alpha*180/pi,distancia,(float)DELTA_ANGULO);
+  matlab_send(alpha_k*180/PI,alpha_a*180/PI,alpha*180/PI,distancia,(float)DELTA_ANGULO);
   //FINALIZA EL LOOP
   //////////////////////////////////////////////////////////////////
+  delayMicroseconds(T_MUESTREO-16383);
   int t_final = micros();
   delayMicroseconds(T_MUESTREO-(t_final-t_inicial));
 }

@@ -7,12 +7,12 @@ distancia = out_pi.out.d1(:); % Salida real
 
 %% 2. Definición del Modelo y Controlador PI
 p1 = 0;
-p2 = -.8468;
-p3 = -8.3056 + 9.4818i;
-p4 = -8.3056 - 9.4818i;
+p2 = -3.5450;
+p3 = -6.1249 + 8.5238i;
+p4 = -6.1249 - 8.5238i;
 
 % Ganancia de la planta
-K = 4.446*56.28;
+K = 13.3*38.95;
 
 % Construir la función de transferencia de la planta
 s = tf('s');
