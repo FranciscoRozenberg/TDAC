@@ -187,7 +187,7 @@ ylabel('Variación de la salida [cm]');
 title('Modelo con Control Proporcional Derivativo (escalon)');
 hold off
 
-Kd = .5;
+Kd = 5e-3;
 
 disp("Kd maximo sin oscilacion excesiva: " + Kd)
 
