@@ -2,9 +2,9 @@
 clear; close all; clc
 
 inicio = 170;
-fin = 800;
+fin=620;
 
-out = load("varios_escalones.mat");
+out = load("varios_escalones2.mat");
 
 angulo_barra = double(out.out.d3(:));
 distancia_medida = double(out.out.d4(:));
@@ -45,7 +45,7 @@ parametros = fminsearch( ...
     @(p) error_modelo(p, u_rel, y_rel, tiempo), ...
     parametros_iniciales, opciones);
 
-K =8* parametros(1);
+K =1*parametros(1);
 a = exp(parametros(2));
 
 % Planta continua identificada directamente

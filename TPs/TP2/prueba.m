@@ -1,6 +1,6 @@
 clc;clear;close all;
 
-G_bc = tf(4.446, [1 0.8468 0]);
+G_bc = tf(13.3, [1 3.5450 0]);
 G_sb = tf(56.28, [1 16.61 158.9]);
 
 G = series(G_bc, G_sb);

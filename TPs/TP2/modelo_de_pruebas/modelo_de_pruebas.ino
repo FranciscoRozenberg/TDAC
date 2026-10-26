@@ -107,13 +107,13 @@ void loop() {
     DELTA_ANGULO = 0;
   }
   if (contador == 475) {
-    DELTA_ANGULO = -8;
+    DELTA_ANGULO = -9;
   }
   if (contador == 525) {
     DELTA_ANGULO = 0;
   }
   if (contador == 625) {
-    DELTA_ANGULO = 10;
+    DELTA_ANGULO = 11;
   }
   if (contador == 675) {
     DELTA_ANGULO = 0;
