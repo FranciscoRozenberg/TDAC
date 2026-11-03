@@ -21,7 +21,7 @@ s = tf('s');
 G = K/((s-p1)*(s-p2)*(s-p3)*(s-p4));
 
 % Parámetros del controlador PD
-Kp = 2.7;
+Kp = 3.7;
 Kd = 0.00002;
 
 % Controlador PD y lazo cerrado
