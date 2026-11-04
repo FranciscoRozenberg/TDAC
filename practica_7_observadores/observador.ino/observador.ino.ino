@@ -42,8 +42,8 @@ Matrix<2, 1> mat_B = { 0.01005,
 Matrix<1, 2> mat_C = { 1.0, 0.0 };
 
 // Vector de ganancias del observador L (2 filas x 1 columna)
-Matrix<2, 1> mat_L = {  0.4188,
-                        1.298 };
+Matrix<2, 1> mat_L = {  0.6445,
+                        1.777};
 
 // Vector de estado estimado X_hat (2 filas x 1 columna)
 Matrix<2, 1> X_hat = { 0.0,
@@ -118,12 +118,12 @@ void loop() {
   if (contador == 600) {
     contador = 0;
     if (DELTA_ANGULO == 10) {
-      DELTA_ANGULO = -10;
+      DELTA_ANGULO = 0;
     } else {
       DELTA_ANGULO = 10;
     }
   }
-  servo.write(90 - DELTA_ANGULO);
+  servo.write(93.4 - DELTA_ANGULO);
 
   // IMU
   sensors_event_t a, g, temp;
