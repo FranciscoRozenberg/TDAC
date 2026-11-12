@@ -17,7 +17,7 @@ L = [ 0.4188 ;
 K = acker(Ad, -Bd, [.75;.75])
 
 %%
-F = (C *(eye(2) - (Ad + Bd *K))^-1 *Bd )^-1
+F = (Cd *(eye(2) - (Ad + Bd *K))^-1 *Bd )^-1
 
 %% Simulación recursiva del Observador de Estados Discreto
 % Se utiliza un bucle explícito para iterar las ecuaciones de estado

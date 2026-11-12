@@ -27,12 +27,6 @@ const float tiempo_1cm = 29.287;  //us
 const unsigned long T_MUESTREO = 20000;  //20ms=50 Hz
 float sesgo_x = 0;
 
-//Ultrasonico
-const float tiempo_1cm = 29.287;         //us
-const unsigned long T_MUESTREO = 20000;  //20ms=50 Hz
-
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-
 
 //SETUP
 void setup() {
@@ -72,9 +66,11 @@ void setup() {
   delay(10);
 }
 
-//FUNCION DE ENVÍO A MATLAB
-void matlab_send(float dato1,float dato2,float dato3,float dato4,float dato5) {
-  Serial.write("abcd"); //header
+
+
+// FUNCION DE ENVÍO A MATLAB
+void matlab_send(float dato1, float dato2, float dato3, float dato4, float dato5) {
+  Serial.write("abcd"); // Header
   byte *b = (byte *)&dato1;
   Serial.write(b, 4);
   b = (byte *)&dato2;
@@ -86,8 +82,6 @@ void matlab_send(float dato1,float dato2,float dato3,float dato4,float dato5) {
   b = (byte *)&dato5;
   Serial.write(b, 4);
 }
-
-
 void loop() {
 
   //VARIABLES DE CONTROL
@@ -100,7 +94,7 @@ void loop() {
   if (contador >= 300) {
       contador = 0;
       if (ref == 0) {
-          ref = 10;
+          ref = 3;
       } else {
           ref = 0;
       }
@@ -118,25 +112,21 @@ void loop() {
   float alpha_grados = alpha * 180.0 / PI;
   float error = ref - alpha_grados;
 
+  
   float K =10;
   float T = T_MUESTREO * 1e-6;
 
   float u_k = u_anterior-(K * T / 2) * error-(K * T / 2) * error_anterior;
-  // float K = 3.4;
-  // float u_k = 90 - K * error;
-  u_k = constrain(u_k, 45, 120);
-  servo.write((int)u_k);
+  //float K = 5.2;
+  //float u_k = 90.99 - K * error;
+
+  servo.write((float)u_k);
 
   alpha_anterior = alpha;
   error_anterior = error;
   u_anterior = u_k;
 
-  Serial.print("IMU: ");
-  Serial.print(alpha_grados);
-  Serial.print("  Error: ");
-  Serial.print(error);
-  Serial.print("  Servo: ");
-  Serial.println(u_k);
+  matlab_send(u_k,error, alpha_grados, K * error, 0);
 
   unsigned long t_final = micros();
   delayMicroseconds(T_MUESTREO - (t_final - t_inicial));

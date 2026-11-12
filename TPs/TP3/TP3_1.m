@@ -1,0 +1,196 @@
+clc;clear;
+%% FUNCIONES DE TRANSFERENCIA
+s = tf('s');
+G_sb = 56.28/(s^2 + 16.61*s + 158.9);
+G_bc = 13.3/(s^2 + 3.5450*s);
+G_total = G_sb*G_bc;
+
+%% SUBSISTEMA SERVO-BARRA
+
+A_sb = [0       1;
+       -158.9  -16.61];
+
+B_sb = [0;
+        56.28];
+
+C_sb = [1  0];
+
+D_sb = 0;
+
+
+%% SUBSISTEMA BARRA-CARRITO
+
+A_bc = [0  1;
+        0 -3.5450];
+
+B_bc = [0;
+        13.3];
+
+C_bc = [1  0];
+
+D_bc = 0;
+
+
+%% MODELO COMPLETO [p, dp, theta, dtheta] (INTERCONEXION EN SERIE)
+
+A = [A_bc          B_bc*C_sb;
+     zeros(2,2)    A_sb];
+
+B = [zeros(2,1);
+     B_sb];
+
+C = [1  0  0  0;
+     0  0  1  0];
+
+D = [0;
+     0];
+
+%% MODELO EN VARIABLES DE ESTADO
+sys_sb = ss(A_sb,B_sb,C_sb,D_sb);
+sys_bc = ss(A_bc,B_bc,C_bc,D_bc);
+sys = ss(A,B,C,D);
+
+%% MATRIZ DE OBSERVABILIDAD
+
+O = obsv(A,C);
+
+rango_O = rank(O);
+
+disp('Matriz de observabilidad:');
+disp(O);
+
+disp('Rango de la matriz de observabilidad:');
+disp(rango_O);
+
+%% OBSERVABILIDAD MIDIENDO SOLAMENTE p
+
+C_p = [1  0  0  0];
+
+O_p = obsv(A,C_p);
+
+rango_p = rank(O_p);
+
+disp('Rango midiendo solamente la posicion:');
+disp(rango_p);
+
+%% OBSERVABILIDAD MIDIENDO SOLAMENTE theta
+
+C_theta = [0  0  1  0];
+
+O_theta = obsv(A,C_theta);
+
+rango_theta = rank(O_theta);
+
+disp('Rango midiendo solamente el angulo:');
+disp(rango_theta);
+
+
+%% DISCRETIZACION POR FORWARD 
+
+Ts = 0.02;
+
+Ad = eye(4) + Ts*A;
+Bd = Ts*B;
+
+Cd = C;
+Dd = D;
+
+sys_forward = ss(Ad,Bd,Cd,Dd,Ts);
+
+
+%% DISCRETIZACION POR ZOH
+
+sys_c = ss(A,B,C,D);
+
+sys_zoh = c2d(sys_c,Ts,'zoh');
+
+Ad_exacto = sys_zoh.A;
+Bd_exacto = sys_zoh.B;
+Cd_exacto = sys_zoh.C;
+Dd_exacto = sys_zoh.D;
+
+%% SIMULACION
+
+t = 0:Ts:5;
+
+% u = ones(length(t),1);  % Entrada escalon unitario
+u = zeros(length(t),1);   % Entrada impulso
+u(1) = 1/Ts;
+
+% Sistema continuo
+[y_c,t_c] = lsim(sys_c,u,t);
+
+% Forward Euler
+[y_forward,t_forward] = lsim(sys_forward,u,t);
+
+% ZOH
+[y_zoh,t_zoh] = lsim(sys_zoh,u,t);
+
+
+%% COMPARACION DE LA POSICION
+
+figure;
+
+plot(t_c,y_c(:,1),'b','LineWidth',1.5);
+hold on;
+stairs(t_forward,y_forward(:,1),'r','LineWidth',1.5);
+stairs(t_zoh,y_zoh(:,1),'k--','LineWidth',1.5);
+
+grid on;
+xlabel('Tiempo [s]');
+ylabel('Posicion p');
+title('Comparacion de la posicion del carrito');
+
+legend('Continuo','Forward Euler','ZOH');
+
+
+%% COMPARACION DEL ANGULO
+
+figure;
+
+plot(t_c,y_c(:,2),'b','LineWidth',1.5);
+hold on;
+stairs(t_forward,y_forward(:,2),'r','LineWidth',1.5);
+stairs(t_zoh,y_zoh(:,2),'k--','LineWidth',1.5);
+
+grid on;
+xlabel('Tiempo [s]');
+ylabel('Angulo \theta');
+title('Comparacion del angulo de la barra');
+
+legend('Continuo','Forward Euler','ZOH');
+
+%% DISEÑO DEL OBSERVADOR
+
+polos_CON = eig(A);
+disp('Polos del sistema continuo:');
+disp(polos_CON);
+
+polos_RAPIDOS = 3*polos_CON;
+
+polos_discretos = exp(polos_RAPIDOS*Ts);
+
+disp('Polos discretos:');
+disp(polos_discretos);
+
+L = place(Ad_exacto',Cd_exacto',polos_discretos)';
+disp('Matriz de ganancias L:');
+disp(L);
+%VERIFICO
+polos_observador = eig(Ad-L*Cd);
+disp('Polos obtenidos del observador:');
+disp(polos_observador);
+
+%% VALOSRES DE K
+
+% Polos deseados continuo
+polos_continuos = [-2, -3, -8+8j, -8-8j];
+
+% Conversion a discreto
+polos_deseados = exp(polos_continuos*Ts);
+
+K = -acker(Ad_exacto, Bd_exacto, polos_deseados);
+Acl = Ad_exacto + Bd_exacto*K;
+eig(Acl)
+disp('Valores de K:');
+disp(K);

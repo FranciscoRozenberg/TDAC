@@ -1,31 +1,21 @@
 #include <Servo.h>
-#include <NewPing.h>
 #include <Adafruit_MPU6050.h>
-#include <Adafruit_Sensor.h>
-#include <Wire.h>
 #include <BasicLinearAlgebra.h>
 
 using namespace BLA;
 
 // PINES
 #define PWM_PIN 5
-#define TRIGGER_PIN 6
-#define ECHO_PIN 7
-#define MAX_DISTANCE 35
 #define PI 3.14159265359
 
 // CREACION DEL SERVO
 Servo servo;
-
-// SENSOR DE ULTRASONIDO
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 // CREACION DE LA IMU
 Adafruit_MPU6050 mpu;
 
 // VARIABLES
 const int posicion_inicial = 1500;       // us
-const float tiempo_1cm = 29.287;         // us
 const unsigned long T_MUESTREO = 20000;  // 20ms = 50 Hz
 float sesgo_x = 0;
 
@@ -42,16 +32,14 @@ Matrix<2, 1> mat_B = { 0.01005,
 Matrix<1, 2> mat_C = { 1.0, 0.0 };
 
 // Vector de ganancias del observador L (2 filas x 1 columna)
-Matrix<2, 1> mat_L = {  0.4188,
-                        1.298 };
+Matrix<2, 1> mat_L = {  0.6445,
+                        1.777};
 
 // Vector de estado estimado X_hat (2 filas x 1 columna)
 Matrix<2, 1> X_hat = { 0.0,
                        0.0 };
 
-Matrix<1, 2> mat_K = {-0.4728,   -0.1679};
-
-Matrix<1,1> F = {3.2802};
+Matrix<1, 2> mat_K = {-6.9162  , -0.2581};
 
 // SETUP
 void setup() {
@@ -109,13 +97,10 @@ void loop() {
   unsigned long t_inicial = micros();
 
   // VARIABLES ESTÁTICAS
-  static int DELTA_ANGULO = 0;
-  static int contador = 0;
   static float alpha_k = 0;
   static float alpha_a = 0;
   static float alpha = 0;
   static float y_hat = 0;
-
 
   // IMU
   sensors_event_t a, g, temp;
@@ -129,28 +114,24 @@ void loop() {
 
   // OBSERVADOR
   float y = alpha * 180.0 / PI;
-  float ref = 0; //grados
-  Matrix<1,1> u_k = /*ref * F*/ 93.4 + (mat_K * X_hat)(0,0);
+  Matrix<1,1> u_k =(mat_K * X_hat)(0,0);
+  
+  // Saturación 
+  float angulo_servo = constrain(90- u_k(0,0), 50, 160);
 
+  // Escritura directa en grados
+  float angulo_us = 980.0 + (angulo_servo / 180.0) * 1000.0;
+  servo.writeMicroseconds((int)angulo_us);
+  
   // y_hat = C * X_hat (matriz 1x1, se accede con (0, 0))
   Matrix<1, 1> y_calc = mat_C * X_hat;
   y_hat = y_calc(0, 0);
 
   // Envío de 5 parámetros: [giro_x, ángulo_y, x1_hat, x2_hat, y_hat]
-  matlab_send((float)g.gyro.x *180 /PI, u_k(0,0), X_hat(0, 0), X_hat(1, 0), y_hat);
+  matlab_send((float)(g.gyro.x - sesgo_x)*180 /PI, y, X_hat(0, 0), X_hat(1, 0), y_hat);
 
   // Actualización del estado estimado
-  //X_hat = (mat_A + mat_B *mat_K)* X_hat + mat_L * (y - y_hat) + mat_B *u_k;
-  X_hat = (mat_A + mat_B *mat_K ) *X_hat + mat_L * (y - y_hat);
-
-  // Accion de Control 
-  float u_grados = u_k(0, 0) ;
-
-  // Saturación 
-  int angulo_servo = constrain((int)u_grados, 50, 160);
-
-  // Escritura directa en grados
-  servo.write(angulo_servo);
+  X_hat = mat_A * X_hat + mat_L * (y - y_hat) + mat_B * u_k;
 
   // CONTROL DE PERIODO DE MUESTREO
   unsigned long t_final = micros();

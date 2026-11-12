@@ -5,16 +5,11 @@
 #include <Wire.h>
 #include <NewPing.h>
 
-//Ultrasonico
-#define TRIGGER_PIN 6
-#define ECHO_PIN 7
-#define MAX_DISTANCE 35  //cm
-
 //PINES
 #define PWM_PIN 5
 #define TRIGGER_PIN 6
 #define ECHO_PIN 7
-#define MAX_DISTANCE 200
+#define MAX_DISTANCE 35
 //CREACION DEL SERVO
 Servo servo;
 //SENSOR DE ULTRASONIDO

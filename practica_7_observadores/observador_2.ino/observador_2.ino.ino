@@ -131,7 +131,7 @@ void loop() {
       DELTA_ANGULO = 10;
     }
   }
-  servo.write(93.4 - DELTA_ANGULO);
+  servo.write(90.99 - DELTA_ANGULO);
 
   // IMU
   sensors_event_t a, g, temp;
@@ -146,7 +146,7 @@ void loop() {
   // OBSERVADOR
   Matrix<2, 1> y = {
     alpha * 180.0 / PI,
-    (g.gyro.x*180/PI)+10
+    ((g.gyro.x - sesgo_x)* 180.0 / PI)+10
   };
   float u = (float)DELTA_ANGULO;
 
@@ -154,7 +154,7 @@ void loop() {
   y_hat = mat_C * X_hat;
 
   // Envío de 5 parámetros: [giro_x, ángulo_y, x1_hat, x2_hat, y_hat]
-  matlab_send((float)g.gyro.x *180 /PI, alpha * 180.0 / PI, X_hat(0, 0), X_hat(1, 0), X_hat(2,0));
+  matlab_send((float)(g.gyro.x - sesgo_x)*180 /PI, alpha * 180.0 / PI, X_hat(0, 0), X_hat(1, 0), X_hat(2,0));
 
   // Actualización del estado estimado
   X_hat = mat_A * X_hat + mat_L * (y - y_hat) + mat_B * u;
