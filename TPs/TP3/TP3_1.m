@@ -164,10 +164,12 @@ legend('Continuo','Forward Euler','ZOH');
 
 polos_CON = eig(A);
 disp('Polos del sistema continuo:');
+
+polos_CON(1)=-1;
 disp(polos_CON);
 
-polos_RAPIDOS = 3*polos_CON;
 
+polos_RAPIDOS = 3*polos_CON;
 polos_discretos = exp(polos_RAPIDOS*Ts);
 
 disp('Polos discretos:');

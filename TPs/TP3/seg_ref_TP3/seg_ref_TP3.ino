@@ -30,26 +30,37 @@ const unsigned long T_MUESTREO = 20000;  // 20ms = 50 Hz
 float sesgo_x = 0;
 
 // MATRICES DE ESTADOS
-// Matriz de transición de estados A (2x2)
-Matrix<2, 2> mat_A = {  0.9718,  0.01684, 
-                       -2.661 ,  0.6921 };
 
-// Vector de entrada B (2 filas x 1 columna)
-Matrix<2, 1> mat_B = { 0.01005,
-                       0.9477  };
+Matrix<4, 4> mat_A = {
+   1.0000,  0.0193,  0.0026,  0.0000,
+   0.0000,  0.9316,  0.2542,  0.0023,
+   0.0000,  0.0000,  0.9716,  0.0168,
+   0.0000,  0.0000, -2.6755,  0.6919
+};
 
-// Vector de salida C (1 fila x 2 columnas: y = C * x)
-Matrix<1, 2> mat_C = { 1.0, 0.0 };
+Matrix<4, 1> mat_B = {
+   0.000004600382825,
+   0.000901213088808,
+   0.010054380401744,
+   0.947634774778379
+};
 
-// Vector de ganancias del observador L (2 filas x 1 columna)
-Matrix<2, 1> mat_L = {  0.4188,
-                        1.298 };
 
-// Vector de estado estimado X_hat (2 filas x 1 columna)
-Matrix<2, 1> X_hat = { 0.0,
-                       0.0 };
+Matrix<2, 4> mat_C = {
+  1, 0, 0, 0,
+  0, 0, 1, 0
+};
 
-Matrix<1, 2> mat_K = { -0.7081, 0.0749};
+Matrix<4, 2> mat_L = {
+   0.467242198997619  , 0.461553077523958,
+  -0.235272899866762  , 0.021581216520960,
+  -0.206631425732552  , 0.354013987039796,
+   1.897142632349404  ,-3.237198641040957
+};
+
+Matrix<4, 1> X_hat = {0, 0, 0, 0};
+
+Matrix<1, 4> mat_K = { -5.0181 ,  -0.9617 ,   0.1065 ,  0.0115};
 
 Matrix<1,1> F = {3.5158};
 
@@ -120,8 +131,10 @@ void loop() {
   static float alpha_k = 0;
   static float alpha_a = 0;
   static float alpha = 0;
-  static float tita_hat = 0;
-  static float w_hat = 0;
+  // MEDICIONES
+  static float p = 0;
+  static float theta = 0;
+  static float w = 0;
 
   if(contador == 400){
     contador = 0;
@@ -145,27 +158,41 @@ void loop() {
   alpha_a = atan2(a.acceleration.y, a.acceleration.z);
   float R = 0.95;
   alpha = (alpha + (g.gyro.x - sesgo_x) * (T_MUESTREO * 1e-6)) * R + alpha_a * (1.0 - R);
+  // ULTRASONIDO
+  float p_aux=0;
+  unsigned int ping = sonar.ping();
+  if (ping == 0) {p_aux = MAX_DISTANCE;
+  } else {
+    p_aux = (float)ping / 2.0 / tiempo_1cm;
+  }
+  float d = 19-5.5/2;
+  p = d - p_aux;
 
-  // OBSERVADOR
-  float tita = alpha * 180.0 / PI;
-  float w = (g.gyro.x - sesgo_x) * 180.0 / PI;
+
+  theta = alpha * 180.0 / PI;
+  w = (g.gyro.x - sesgo_x) * 180.0 / PI;
+  Matrix<2, 1> Y = {p,theta};
+
   Matrix<1,1> u_k = ref * F+ (mat_K * X_hat)(0,0);
 
   // Saturación 
-  float angulo_servo = constrain(90.0 - u_k(0,0), 50.0, 160.0);
+  float angulo_servo = constrain(93.0 - u_k(0,0), 50.0, 160.0);
   servo.write(angulo_servo);
 
-  // tita_hat = C * X_hat (matriz 1x1, se accede con (0, 0))
-  Matrix<1, 1> tita_calc = mat_C * X_hat;
-  tita_hat = tita_calc(0, 0);
-  w_hat=X_hat(1, 0);
+  Matrix<2, 1> theta_calc = mat_C * X_hat;
 
-  // Envío de 5 parámetros: [giro_x, ángulo_y, x1_hat, x2_hat, y_hat]
-  matlab_send(tita, tita_hat,w, w_hat, ref,angulo_servo,90.0 + u_k(0,0),0);
+  // OBSERVADOR
+  Matrix<2, 1> Y_hat = mat_C * X_hat;
+
+  //MATLAB
+  float p_hat = X_hat(0, 0);
+  float dp_hat = X_hat(1, 0);
+  float theta_hat = X_hat(2, 0);
+  float w_hat = X_hat(3, 0);
+  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, u_k(0,0));
 
   // Actualización del estado estimado
-  //X_hat = (mat_A + mat_B *mat_K)* X_hat + mat_L * (tita - tita_hat) + mat_B *u_k;
-  X_hat = mat_A * X_hat + mat_B * u_k(0,0)+ mat_L * (tita - tita_hat);
+  X_hat = mat_A * X_hat + mat_B * u_k+ mat_L * (Y - Y_hat);
 
   // CONTROL DE PERIODO DE MUESTREO
   unsigned long t_final = micros();

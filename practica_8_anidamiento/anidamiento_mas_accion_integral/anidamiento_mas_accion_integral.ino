@@ -158,7 +158,7 @@ void loop() {
   Matrix<1,1> u_k = mat_K * X_hat + H * q_k;
 
   // SATURACION
-  float angulo_servo = constrain(90.0 - u_k(0,0), 50.0, 160.0);
+  float angulo_servo = constrain(93.0 - u_k(0,0), 50.0, 160.0);
   servo.write(angulo_servo);
 
   // ACTUALIZACION DEL OBSERVADOR

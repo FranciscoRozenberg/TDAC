@@ -28,8 +28,10 @@ const int posicion_inicial = 1500;       // us
 const float tiempo_1cm = 29.287;         // us
 const unsigned long T_MUESTREO = 20000;  // 20ms = 50 Hz
 float sesgo_x = 0;
+const float Ts = 1.0/50.0;
 
-// MATRICES DEL OBSERVADOR
+// MATRICES DE ESTADOS
+
 Matrix<4, 4> mat_A = {
    1.0000,  0.0193,  0.0026,  0.0000,
    0.0000,  0.9316,  0.2542,  0.0023,
@@ -38,11 +40,12 @@ Matrix<4, 4> mat_A = {
 };
 
 Matrix<4, 1> mat_B = {
-  0.0000,
-  0.0009,
-  0.0101,
-  0.9476
+   0.000004600382825,
+   0.000901213088808,
+   0.010054380401744,
+   0.947634774778379
 };
+
 
 Matrix<2, 4> mat_C = {
   1, 0, 0, 0,
@@ -50,13 +53,17 @@ Matrix<2, 4> mat_C = {
 };
 
 Matrix<4, 2> mat_L = {
-    0.3399  , -0.3515,
-   -1.2001   , 1.4523,
-    0.2549 ,   0.4231,
-   -2.6413  , -3.0940
+   0.467242198997619  , 0.461553077523958,
+  -0.235272899866762  , 0.021581216520960,
+  -0.206631425732552  , 0.354013987039796,
+   1.897142632349404  ,-3.237198641040957
 };
 
 Matrix<4, 1> X_hat = {0, 0, 0, 0};
+
+Matrix<1, 4> mat_K = { -5.0181 ,  -0.9617 ,   0.1065 ,  0.0115};
+
+Matrix<1,1> H= {2.5};
 
 // SETUP
 void setup() {
@@ -120,7 +127,7 @@ void loop() {
   unsigned long t_inicial = micros();
 
   // VARIABLES ESTÁTICAS
-  static float u = 0;
+  static float ref = 0;
   static int contador = 0;
   static float alpha_k = 0;
   static float alpha_a = 0;
@@ -129,34 +136,20 @@ void loop() {
   static float p = 0;
   static float theta = 0;
   static float w = 0;
+  static float q_k = 0;
+
+  if(contador == 400){
+    contador = 0;
+
+    if(ref == 0){
+      ref = 7;
+    }
+    else if(ref == 7){
+      ref = 0;
+    }
+  }
+
   contador++;
-  // SERVO
-  if (contador == 200) {
-    u = -7;
-  }
-  if (contador == 225) {
-    u = 0;
-  }
-  if (contador == 325) {
-    u = 10;
-  }
-  if (contador == 375) {
-    u = 0;
-  }
-  if (contador == 475) {
-    u = -7;
-  }
-  if (contador == 525) {
-    u = 0;
-  }
-  if (contador == 625) {
-    u = 7;
-  }
-  if (contador == 675) {
-    u = 0;
-  }
-  // ENTRADA DEL SISTEMA
-  servo.write(90 - u);
 
   // IMU
   sensors_event_t a, g, temp;
@@ -167,10 +160,6 @@ void loop() {
   alpha_a = atan2(a.acceleration.y, a.acceleration.z);
   float R = 0.95;
   alpha = (alpha + (g.gyro.x - sesgo_x) * (T_MUESTREO * 1e-6)) * R + alpha_a * (1.0 - R);
-  
-  theta = alpha * 180.0 / PI;
-  w = (float)(g.gyro.x - sesgo_x)*180 /PI;
-  
   // ULTRASONIDO
   float p_aux=0;
   unsigned int ping = sonar.ping();
@@ -181,26 +170,30 @@ void loop() {
   float d = 19-5.5/2;
   p = d - p_aux;
 
-  // VECTOR DE MEDICIONES
+  theta = alpha * 180.0 / PI;
+  w = (g.gyro.x - sesgo_x) * 180.0 / PI;
   Matrix<2, 1> Y = {p,theta};
 
-  // OBSERVADOR
-  // Salida estimada: Y_hat = C * X_hat
+  // SALIDA ESTIMADA
+  Matrix<2,1> tita_calc = mat_C * X_hat;
   Matrix<2, 1> Y_hat = mat_C * X_hat;
-
+  // ACCION INTEGRAL
+  q_k = q_k + Ts * (ref - X_hat(0, 0));
+  // LEY DE CONTROL
+  Matrix<1,1> u_k = (mat_K * X_hat)(0,0) + H * q_k;
+  // SATURACION
+  float angulo_servo = constrain(93.0 - u_k(0,0), 50.0, 160.0);
+  servo.write(angulo_servo);
   //MATLAB
   float p_hat = X_hat(0, 0);
   float dp_hat = X_hat(1, 0);
   float theta_hat = X_hat(2, 0);
-  float dtheta_hat = X_hat(3, 0);
-  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, dtheta_hat, u);
-  
-  // Actualización del estado estimado
-  X_hat = mat_A * X_hat + mat_B * u + mat_L * (Y - Y_hat);
+  float w_hat = X_hat(3, 0);
+  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, u_k(0,0));
+  // ACTUALIZACION DEL OBSERVADOR
+  X_hat = mat_A * X_hat + mat_B * u_k(0,0) + mat_L * (Y - Y_hat);
   // CONTROL DE PERIODO DE MUESTREO
   unsigned long t_final = micros();
   unsigned long t_ejecucion = t_final - t_inicial;
-  if (t_ejecucion < T_MUESTREO) {
-    delayMicroseconds(T_MUESTREO - t_ejecucion);
-  }
+  delayMicroseconds(T_MUESTREO - t_ejecucion);
 }

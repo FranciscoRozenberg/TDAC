@@ -38,10 +38,10 @@ Matrix<4, 4> mat_A = {
 };
 
 Matrix<4, 1> mat_B = {
-  0.0000,
-  0.0009,
-  0.0101,
-  0.9476
+   0.000004600382825,
+   0.000901213088808,
+   0.010054380401744,
+   0.947634774778379
 };
 
 Matrix<2, 4> mat_C = {
@@ -50,15 +50,15 @@ Matrix<2, 4> mat_C = {
 };
 
 Matrix<4, 2> mat_L = {
-    0.3399  , -0.3515,
-   -1.2001   , 1.4523,
-    0.2549 ,   0.4231,
-   -2.6413  , -3.0940
+   0.467242198997619  , 0.461553077523958,
+  -0.235272899866762  , 0.021581216520960,
+  -0.206631425732552  , 0.354013987039796,
+   1.897142632349404  ,-3.237198641040957
 };
 
 Matrix<4, 1> X_hat = {0, 0, 0, 0};
 
-Matrix<1, 4> mat_K = { -1.0181 ,  -0.2617 ,   0.1065 ,  -0.0115};
+Matrix<1, 4> mat_K = { -5.0181 ,  -0.9617 ,   0.1065 ,  0.0115};
 
 // SETUP
 void setup() {
@@ -174,7 +174,7 @@ void loop() {
   matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, dtheta_hat, u_k(0,0));
 
   // Actualización del estado estimado
-  X_hat = mat_A * X_hat + mat_B * u_k+ mat_L * (Y - Y_hat);
+  X_hat = mat_A * X_hat + mat_B * u_k + mat_L * (Y - Y_hat);
   
   // CONTROL DE PERIODO DE MUESTREO
   unsigned long t_final = micros();

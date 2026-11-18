@@ -142,7 +142,7 @@ void loop() {
   Matrix<1,1> u_k = ref * F+ (mat_K * X_hat)(0,0);
 
   // Saturación 
-  float angulo_servo = constrain(90.0 - u_k(0,0), 50.0, 160.0);
+  float angulo_servo = constrain(93.0 - u_k(0,0), 50.0, 160.0);
   servo.write(angulo_servo);
 
   // tita_hat = C * X_hat (matriz 1x1, se accede con (0, 0))
