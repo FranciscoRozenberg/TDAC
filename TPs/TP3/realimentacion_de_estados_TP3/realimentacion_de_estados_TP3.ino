@@ -155,7 +155,7 @@ void loop() {
 
   // VECTOR DE MEDICIONES
   Matrix<2, 1> Y = {p,theta};
-
+  // ACCION DE CONTROL
   Matrix<1,1> u_k =mat_K * X_hat;
 
   // SATURACION
