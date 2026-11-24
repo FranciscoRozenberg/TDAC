@@ -33,17 +33,17 @@ const float Ts = 1.0/50.0;
 // MATRICES DE ESTADOS
 
 Matrix<4, 4> mat_A = {
-   1.0000,  0.0193,  0.0026,  0.0000,
-   0.0000,  0.9316,  0.2542,  0.0023,
-   0.0000,  0.0000,  0.9716,  0.0168,
-   0.0000,  0.0000, -2.6755,  0.6919
+    1.0000,    0.0200,         0,         0,
+         0,    0.9291,    0.2660,         0,
+         0,         0,    1.0000,    0.0200,
+         0,         0,   -3.1780,    0.6678,
 };
 
 Matrix<4, 1> mat_B = {
-   0.000004600382825,
-   0.000901213088808,
-   0.010054380401744,
-   0.947634774778379
+         0,
+         0,
+         0,
+    1.1256,
 };
 
 
@@ -53,16 +53,16 @@ Matrix<2, 4> mat_C = {
 };
 
 Matrix<4, 2> mat_L = {
-   0.467242198997619  , 0.461553077523958,
-  -0.235272899866762  , 0.021581216520960,
-  -0.206631425732552  , 0.354013987039796,
-   1.897142632349404  ,-3.237198641040957
+  0.666352810096982 , -0.095143241799271,
+ -0.071049716985826 ,  0.338381652436354,
+  0.399441263063421 ,  0.378405200994324,
+ -1.958522680588874 , -0.974601939353084,
 };
 
 Matrix<4, 1> X_hat = {0, 0, 0, 0};
 
-Matrix<1, 4> mat_K = { -6.507431 , -1.263408 , -1.339876 , -0.090616 };
-Matrix<1, 1> H     = { 9.123615 };
+Matrix<1, 4> mat_K = { -3.5,   -0.2099,    0.8,   -0.0105 };
+Matrix<1, 1> H     = { 3 };
 
 // SETUP
 void setup() {
@@ -141,13 +141,13 @@ if(contador == 400){
     contador = 0;
 
     if(ref == 0){
-      ref = 5;
+      ref = 0;
     }
-    else if(ref == 5){
+    else if(ref == 0){
       ref = 0;
     }
     else{
-      ref = 5;
+      ref = 50;
     }
   }
 
@@ -191,7 +191,8 @@ if(contador == 400){
   float dp_hat = X_hat(1, 0);
   float theta_hat = X_hat(2, 0);
   float w_hat = X_hat(3, 0);
-  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, ref);
+  //matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, ref);
+  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, u_k(0,0));
   // ACTUALIZACION DEL OBSERVADOR
   X_hat = mat_A * X_hat + mat_B * u_k(0,0) + mat_L * (Y - Y_hat);
   // CONTROL DE PERIODO DE MUESTREO

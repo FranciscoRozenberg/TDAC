@@ -169,14 +169,15 @@ polos_CON(1)=-1;
 disp(polos_CON);
 
 
-polos_RAPIDOS = 3*polos_CON;
+polos_RAPIDOS = 2*polos_CON;
 polos_discretos = exp(polos_RAPIDOS*Ts);
 
 disp('Polos discretos:');
 disp(" ");
 disp(polos_discretos);
 
-L = place(Ad_exacto',Cd_exacto',polos_discretos)';
+%L = place(Ad_exacto',Cd_exacto',polos_discretos)';
+L = place(Ad',Cd',polos_discretos)';
 disp('Matriz de ganancias L:');
 disp(" ");
 pretty(vpa(sym(L),5));
@@ -195,8 +196,12 @@ polos_continuos = [-2, -3, -8+8j, -8-8j];
 % Conversion a discreto
 polos_deseados = exp(polos_continuos*Ts);
 
-K = -acker(Ad_exacto, Bd_exacto, polos_deseados);
-Acl = Ad_exacto + Bd_exacto*K;
+%K = -acker(Ad_exacto, Bd_exacto, polos_deseados);
+%Acl = Ad_exacto + Bd_exacto*K;
+K = -acker(Ad, Bd, polos_deseados);
+Acl = Ad + Bd*K;
+
+
 eig(Acl)
 disp('Valores de K:');
 pretty(vpa(sym(K),5));
@@ -207,10 +212,10 @@ pretty(vpa(sym(K),5));
 
 % 1. Sistema discreto aumentado (4 estados de la planta + 1 estado integrador q_k)
 % Usa C_p = [1 0 0 0], Ad_exacto, Bd_exacto y Ts ya definidos arriba en TP3_1.m
-A_aug = [Ad_exacto,   zeros(4,1);
+A_aug = [Ad,   zeros(4,1);
         -C_p * Ts,    1];
 
-B_aug = [Bd_exacto;
+B_aug = [Bd;
          0];
 
 % Verificación de controlabilidad del sistema aumentado
@@ -245,7 +250,7 @@ H     = K_aug(5);
 K_int(1) = K_int(1) + H * Ts;
 
 % Verificación de los polos reales de lazo cerrado tal como corre en el .ino
-Acl_ino = [Ad_exacto + Bd_exacto*(K_int - H*Ts*C_p),  Bd_exacto*H;
+Acl_ino = [Ad + Bd*(K_int - H*Ts*C_p),  Bd*H;
           -C_p*Ts,                                   1];
 
 disp('Polos reales a lazo cerrado en z (con orden del .ino):');
