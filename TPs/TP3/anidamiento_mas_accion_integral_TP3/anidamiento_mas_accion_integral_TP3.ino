@@ -61,9 +61,8 @@ Matrix<4, 2> mat_L = {
 
 Matrix<4, 1> X_hat = {0, 0, 0, 0};
 
-Matrix<1, 4> mat_K = { -5.0181 ,  -0.9617 ,   0.1065 ,  0.0115};
-
-Matrix<1,1> H= {2.5};
+Matrix<1, 4> mat_K = { -6.507431 , -1.263408 , -1.339876 , -0.090616 };
+Matrix<1, 1> H     = { 9.123615 };
 
 // SETUP
 void setup() {
@@ -138,14 +137,17 @@ void loop() {
   static float w = 0;
   static float q_k = 0;
 
-  if(contador == 400){
+if(contador == 400){
     contador = 0;
 
     if(ref == 0){
-      ref = 7;
+      ref = 5;
     }
-    else if(ref == 7){
+    else if(ref == 5){
       ref = 0;
+    }
+    else{
+      ref = 5;
     }
   }
 
@@ -189,7 +191,7 @@ void loop() {
   float dp_hat = X_hat(1, 0);
   float theta_hat = X_hat(2, 0);
   float w_hat = X_hat(3, 0);
-  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, u_k(0,0));
+  matlab_send(p, p_hat, dp_hat, theta, theta_hat, w, w_hat, ref);
   // ACTUALIZACION DEL OBSERVADOR
   X_hat = mat_A * X_hat + mat_B * u_k(0,0) + mat_L * (Y - Y_hat);
   // CONTROL DE PERIODO DE MUESTREO

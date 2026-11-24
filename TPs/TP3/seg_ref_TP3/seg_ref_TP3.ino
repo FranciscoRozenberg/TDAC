@@ -139,11 +139,14 @@ void loop() {
   if(contador == 400){
     contador = 0;
 
-    if(ref == 0){
-      ref = 7;
+    if(ref == -5){
+      ref = 5;
     }
-    else if(ref == 7){
-      ref = 0;
+    else if(ref == 5){
+      ref = -5;
+    }
+    else{
+      ref = 5;
     }
   }
 
